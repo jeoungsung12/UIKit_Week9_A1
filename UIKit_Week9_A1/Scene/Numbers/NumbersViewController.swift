@@ -34,14 +34,44 @@ class NumbersViewController: BaseViewController {
     }
     
     override func configureView() {
-        
+        self.view.backgroundColor = .white
+        [number1, number2, number3].forEach({
+            $0.layer.borderWidth = 1
+            $0.textAlignment = .right
+            $0.keyboardType = .numberPad
+            $0.layer.borderColor = UIColor.black.cgColor
+        })
+        result.textColor = .black
+        result.textAlignment = .right
     }
     
     override func configureHierarchy() {
-        
+        [number1, number2, number3, result].forEach({ self.view.addSubview($0) })
     }
     
     override func configureLayout() {
+        number1.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(12)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.equalTo(100)
+        }
         
+        number2.snp.makeConstraints { make in
+            make.top.equalTo(number1.snp.bottom).offset(12)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.equalTo(100)
+        }
+        
+        number3.snp.makeConstraints { make in
+            make.top.equalTo(number2.snp.bottom).offset(12)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.equalTo(100)
+        }
+        
+        result.snp.makeConstraints { make in
+            make.top.equalTo(number3.snp.bottom).offset(12)
+            make.trailing.equalToSuperview().inset(12)
+            make.width.equalTo(100)
+        }
     }
 }
