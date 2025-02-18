@@ -77,7 +77,9 @@ final class SimpleValidationViewController: BaseViewController {
         
         [titleLabel, subTitleLabel].forEach({ $0.textAlignment = .left })
         
-        doSomethingButton.backgroundColor = .gray
+        doSomethingButton.backgroundColor = .green
+        doSomethingButton.setTitle("Do Something", for: .normal)
+        doSomethingButton.setTitleColor(.black, for: .normal)
     }
     
     override func configureHierarchy() {
